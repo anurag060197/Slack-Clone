@@ -7,7 +7,7 @@ import Chat from "./Components/Chat";
 import Login from "./Components/Login";
 
 function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState("a");
 
   return (
     <div className="app">
