@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 import Chat from "./Components/Chat";
 import Login from "./Components/Login";
+import { useStateValue } from "./Components/StateProvider";
 
 function App() {
-  const [user, setUser] = useState("a");
+  const [{ user }] = useStateValue();
 
   return (
     <div className="app">

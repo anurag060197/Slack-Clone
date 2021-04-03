@@ -5,6 +5,7 @@ import StarBorderOutLinedIcon from "@material-ui/icons/StarBorderOutlined";
 import InfoOutLinedIcon from "@material-ui/icons/InfoOutlined";
 import db from '../Firebase';
 import Message from "../Message";
+import ChatInput from "../ChatInput";
 
 const Chat = () => {
     const {roomid} = useParams();
@@ -23,7 +24,7 @@ const Chat = () => {
         .onSnapshot(snapshot=>
             setRoomMessages(snapshot.docs.map(doc=>doc.data())))
     }, [roomid]);
-    console.log(roomMessages);
+    console.log(roomid);
     return (
         <div className="chat">
             <div className="chat_header">
@@ -41,16 +42,15 @@ const Chat = () => {
             </div>
 
             <div className="chat_messages">
-                {
-                    roomMessages.map(({message, timeStamp, user, userImage})=>(
-                        <Message 
-                        message={message}
-                        timeStamp={timeStamp}
-                        user={user}
-                        userImage={userImage} />
-                    ))
-                }
+                {roomMessages.map(({message, timeStamp, user, userImage})=>(
+                    <Message 
+                    message={message}
+                    timeStamp={timeStamp}
+                    user={user}
+                    userImage={userImage} />
+                ))}
             </div>
+            <ChatInput channelName={roomDetails?.name} channelID={roomid} />
         </div>
     );
 };
